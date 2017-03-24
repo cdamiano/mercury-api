@@ -1,0 +1,15 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - docker info
+
+deployment:
+  herokudocker:
+    branch: master
+    commands:
+      - docker build -t registry.heroku.com/nameless-mesa-38684/web .
+      - docker login --email=$HEROKU_USERNAME --username=$HEROKU_USERNAME --password=$HEROKU_TOKEN registry.heroku.com
+      - docker push registry.heroku.com/nameless-mesa-38684/web
