@@ -8,9 +8,9 @@ app.set("port", port);
 
 app.use(bodyParser.json());
 
-app.get('/', function(req, res) {
+app.get("/", (req,res) => {
   res.send({"msg": "hello world"})
-})
+});
 
 const cwd = process.env.NODE_ENV === 'production' ? 'dist' : 'src'
 consign({cwd: cwd, verbose:true})

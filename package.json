@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js --exec babel-node",
+    "dev": "nodemon src/server.js --exec babel-node",
     "build": "babel src -d dist",
-    "start": "npm run build && NODE_ENV=production node dist/index.js",
+    "start": "npm run build && NODE_ENV=production node dist/server.js",
     "test": "mocha --compilers js:babel-register --reporter mocha-junit-reporter"
   },
   "author": "",
