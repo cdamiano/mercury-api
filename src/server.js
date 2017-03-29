@@ -5,7 +5,8 @@ const app = express();
 const cwd = process.env.NODE_ENV === 'production' ? 'dist' : 'src'
 
 consign({cwd: cwd, verbose:true})
-  .include("middleware.js")
+  .include("config.js")
+  .then("middleware.js")
   .then("boot.js")
   .then("routes")
   .into(app)
