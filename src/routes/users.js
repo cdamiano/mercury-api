@@ -1,6 +1,7 @@
 module.exports = app => {
   const User = app.model.user
   app.route("/users")
+    .all(app.auth.authenticate())
     .get((req, res) => {
       User.find().then( users => {
         res.send(users);
@@ -20,7 +21,7 @@ module.exports = app => {
       }).catch (err => {
         res.send(err);
       });
-      
+
     });
 
 };
