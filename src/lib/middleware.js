@@ -16,5 +16,5 @@ module.exports = app => {
       write: (message) => { logger.info(message); }
     }
   }))
-  app.use(app.auth.initialize());
+  app.use(app.lib.auth.initialize());
 }

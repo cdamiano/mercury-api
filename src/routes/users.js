@@ -1,7 +1,7 @@
 module.exports = app => {
   const User = app.model.user
   app.route("/users")
-    .all(app.auth.authenticate())
+    .all(app.lib.auth.authenticate())
     .get((req, res) => {
       User.find().then( users => {
         res.send(users);

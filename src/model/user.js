@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 
 module.exports = app => {
-  const Schema = app.db.Schema
+  const Schema = app.lib.db.Schema
 
   const userSchema = new Schema({
     name: { type: String, required: true},
@@ -19,5 +19,5 @@ module.exports = app => {
     next();
   });
 
-  return app.db.model('User', userSchema)
+  return app.lib.db.model('User', userSchema)
 }
