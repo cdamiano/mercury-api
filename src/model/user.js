@@ -15,7 +15,6 @@ module.exports = app => {
 
   userSchema.pre('save', function (next) {
     const salt = bcrypt.genSaltSync();
-    console.log(this);
     this.password = bcrypt.hashSync(this.password, salt);
     next();
   });

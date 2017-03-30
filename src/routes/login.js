@@ -1,4 +1,4 @@
-import jwt from 'jwt-simple'
+import jwt from 'jsonwebtoken'
 
 module.exports = app => {
   const User = app.model.user;
@@ -13,7 +13,7 @@ module.exports = app => {
           if (user.isPassword(user.password, password)) {
             const payload = {id: user._id};
             res.json({
-              token: jwt.encode(payload, cfg.jwtSecret)
+              token: jwt.sign(payload, cfg.jwtSecret, {expiresIn: cfg.jwtExpiry})
             });
           } else {
             res.sendStatus(401);
