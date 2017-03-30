@@ -1,5 +1,8 @@
 module.exports = app => {
   return {
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3000,
+    db: {
+      uri: process.env.MONGODB_URI || "mongodb://localhost/myapp"
+    }
   }
 };
