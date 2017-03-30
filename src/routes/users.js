@@ -2,8 +2,10 @@ module.exports = app => {
   const User = app.model.user
   app.route("/users")
     .get((req, res) => {
-      User.find((err, users) => {
+      User.find().then( users => {
         res.send(users);
+      }).catch( e => {
+        res.send(e);
       });
     })
 
@@ -13,13 +15,12 @@ module.exports = app => {
       user.password = req.body.password;
       user.email = req.body.email;
 
-      user.save((err) => {
-        if (err)
-          res.send(err);
-        else
-          res.json(user);
+      user.save().then( () => {
+        res.json(user);
+      }).catch (err => {
+        res.send(err);
       });
-
+      
     });
 
 };
