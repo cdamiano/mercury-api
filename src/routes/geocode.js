@@ -7,6 +7,7 @@ module.exports = app => {
     .get((req, res) => {
       if (req.query.address) {
         geocodeClient({address: req.query.address}).then ( response => {
+          logger.info(`GEOCODE: user [${req.user.email}], address: [${req.query.address}]`)
           res.send(response);
         }).catch(err => {
           logger.error(err);
